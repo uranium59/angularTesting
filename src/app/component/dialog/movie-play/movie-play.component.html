@@ -1,0 +1,19 @@
+<div mat-dialog-content>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title style="width:100%">
+        <h4>
+          차량 영상 재생
+        </h4>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="movie-area">
+        {{ url }}
+        <video width="640" height="360" controls>
+          <source src="assets/{{url}}" type="video/mp4">
+        </video>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

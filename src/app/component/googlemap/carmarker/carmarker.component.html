@@ -1,0 +1,13 @@
+<agm-marker [latitude]="latitude" [longitude]="longitude" (mouseOver)="onMouseOver(infoWindow,gm)" (mouseOut)="onMouseLeave(infoWindow)" 
+  (markerClick)="onMouseClick()">
+  <agm-info-window #infoWindow (infoWindowClose)="closeInfoWindow()">
+    <mat-card>
+      <mat-card-content>
+        차량 아이디 : {{carId}}<br/>
+        차량 타입 : {{carType}}
+        <br/>
+        <a mat-button [routerLink]="['/carmovie', movieUrl]" >차량영상재생</a>
+      </mat-card-content>
+    </mat-card>
+  </agm-info-window>
+</agm-marker>

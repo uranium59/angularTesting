@@ -1,10 +1,14 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-</div>
-<div>
-	<app-googlemap></app-googlemap>
-</div>
-<app-insidepopup></app-insidepopup>
+<mat-sidenav-container class="sideMenu-container">
+	<mat-sidenav class="left-container" #sidenav (keydown.escape)="close('escape')">
+		<app-leftsidemenu (toggleSide)="sidenav.toggle()">
+		</app-leftsidemenu>
+	</mat-sidenav>
+	<mat-sidenav-content>
+		<button class="left-side-toggle" type="button" mat-button (click)="sidenav.toggle()">
+			Toggle
+		</button>
+		<app-googlemap></app-googlemap>
+		<router-outlet></router-outlet>
+	</mat-sidenav-content>
+</mat-sidenav-container>

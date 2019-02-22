@@ -1,0 +1,10 @@
+<div class="map-frame">
+	<!-- <div class="background">
+		asdf
+	</div> -->
+	<agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [minZoom]="minzoom" [maxZoom]="maxzoom" [streetViewControl]="false">
+	<li *ngFor="let car of cars">
+		<app-carmarker [Car]="car">testcar</app-carmarker>
+	</li>
+	</agm-map>
+</div>

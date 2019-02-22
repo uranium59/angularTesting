@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { InsidepopupComponent } from './insidepopup.component';
+import { CarmarkerComponent } from './carmarker.component';
 
-describe('InsidepopupComponent', () => {
-  let component: InsidepopupComponent;
-  let fixture: ComponentFixture<InsidepopupComponent>;
+describe('CarmarkerComponent', () => {
+  let component: CarmarkerComponent;
+  let fixture: ComponentFixture<CarmarkerComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ InsidepopupComponent ]
+      declarations: [ CarmarkerComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(InsidepopupComponent);
+    fixture = TestBed.createComponent(CarmarkerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

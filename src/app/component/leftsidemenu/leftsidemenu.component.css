@@ -1,0 +1,19 @@
+.left-header{
+    margin-top: 10px;
+    margin-left: 15px;
+}
+
+.left-side-toggle{
+    position: absolute;
+    top:5px; right: 10px;
+    background-color: aliceblue;
+    float: right;
+}
+
+.submenu {
+    height: 0;
+    overflow: hidden;
+    background-color: aliceblue;
+    font-size: 14px;
+    transition: height 0.4s ease;
+}

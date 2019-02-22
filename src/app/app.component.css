@@ -1,0 +1,20 @@
+
+.main-frame {
+    border: none;
+    width:100%;
+    height:100%;
+    position: absolute;
+    top:0px; left:0px; right:0px; bottom:0px;
+    overflow:auto;
+}
+
+.left-container {
+    width: 200px;
+}
+
+.left-side-toggle{
+    position: absolute;
+    top: 5px; left: 10px;
+    z-index: 5;
+    background-color: aliceblue;
+}
