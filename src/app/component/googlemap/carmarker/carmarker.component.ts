@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Car } from '../../../models/car';
+import {CarGrid} from './cargridtile';
 
 @Component({
   selector: 'app-carmarker',
@@ -10,22 +11,22 @@ export class CarmarkerComponent implements OnInit {
   holddisplay: boolean = false;
   displaying: boolean = false;
 
-  longitude: number;
-  latitude: number;
-  carId: number;
-  carType: string;
-  movieUrl: string;
+  car: Car;
+  tiles: CarGrid[];
 
   @Input()
   set Car(car: Car){
-    this.longitude = car.Longitude;
-    this.latitude = car.Latitude;
-    this.carId = car.CarId;
-    this.carType = car.CarType;
-    this.movieUrl = car.MovieUrl;
+    this.car = car;
+    this.tiles=[
+      {text: '차량종류', cols: 1, rows: 1, class: 'grid-left'},
+      {text: car.CarType, cols: 1, rows: 1, class: 'grid-right'},
+      {text: '차량상태', cols: 1, rows: 1, class: 'grid-left'},
+      {text: car.Status, cols: 1, rows: 1, class: 'grid-right'},
+    ];
   }
 
   constructor() {
+
   }
 
   ngOnInit() {

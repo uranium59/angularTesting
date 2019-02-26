@@ -1,19 +1,66 @@
+.nav{
+    background-image: linear-gradient(to 45 deg, #fff3e2, #fff);
+    height: 80%;
+}
+
 .left-header{
     margin-top: 10px;
-    margin-left: 15px;
+    margin-left: 17px;
+}
+
+.login-card{
+    width: 155px;
+    margin: 10% auto;
+}
+
+.mat-card-title{
+    font-size: 15px;
+    left : 13px;
+}
+
+.input-full-width{
+    width: 100%;
+}
+
+.mat-card-actions{
+    text-align: right;
+}
+
+.welcome-message{
+    height: 50px;
 }
 
 .left-side-toggle{
     position: absolute;
-    top:5px; right: 10px;
+    top:7px; right: 10px;
     background-color: aliceblue;
     float: right;
 }
 
+.accordion {
+    padding: 0px 0px 0px 15px;
+    margin: auto;  
+    border-radius: 4px;
+}
+
+.accordion .menu{
+    width: 100%;
+}
+
+.accordion .menu button{
+    text-align: left;
+    width: 100%;
+}
+
+.accordion li i.menu-arrow {
+    transform: rotate(90deg);
+}
+
 .submenu {
     height: 0;
+    padding: 0px 0px 0px 15px;
     overflow: hidden;
-    background-color: aliceblue;
+    background-color: rgb(235, 244, 252);
     font-size: 14px;
     transition: height 0.4s ease;
 }

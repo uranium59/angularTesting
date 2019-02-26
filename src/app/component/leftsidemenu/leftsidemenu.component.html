@@ -1,11 +1,43 @@
 <div class="nav">
   <div class="left-top">
-    <h2 class="left-header">Menu</h2>
+    <h2 class="left-header">메뉴</h2>
     <button class="left-side-toggle" type="button" mat-button (click)="toggleSelf()">
-      Toggle
+      메뉴닫기
     </button>
   </div>
+  <mat-card class="login-card">
+    <mat-card-header>
+      <mat-card-title>로그인</mat-card-title>
+    </mat-card-header>
+    <form class="example-form" [formGroup]="loginForm">
+      <mat-card-content>
+        <table class="input-full-width" cellspacing="0">
+          <tr>
+            <td>
+              <mat-form-field class="input-full-width">
+                <input matInput placeholder="ID" formControlName="userId" name="ID">
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-form-field class="input-full-width">
+                <input matInput placeholder="비밀번호" formControlName="password" type="password">
+              </mat-form-field>
+            </td>
+          </tr>
+        </table>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button (click)="login()" color="primary">로그인</button>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+  <div class="welcome-message">
+    ㅇㅇㅇ님 환영합니다
+  </div>
   <ul id="accordion" class="accordion">
+    <mat-divider></mat-divider>
     <li *ngFor="let menu of menus; let i = index" [class.active]="menu.active">
       <div class="menu" (click)="toggle(i)">
         <i [class]="menu.iconClass"></i>
@@ -18,6 +50,7 @@
           <button mat-button (click)="loadform(submenu.url)">{{ submenu.name }}</button>
         </li>
       </ul>
+      <mat-divider></mat-divider>
     </li>
   </ul>
 </div>

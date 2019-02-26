@@ -1,0 +1,26 @@
+.marker-button{
+    text-align:center;
+}
+
+.car-marker{
+    margin-top: 10px;
+    margin-left : 20px;
+    margin-bottom: 10px;
+    max-width: 330px;
+    text-align: left;
+}
+
+.car-marker > p{
+    margin-bottom : 8px;
+    margin-top: 13px;
+}
+.car-marker > h3{
+    margin-bottom : 5px;
+    margin-top: 5px;
+}
+.grid-left{
+    width: 40px;
+}
+.grid-right{
+    width: 80px;
+}

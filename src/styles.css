@@ -1,4 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
 
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: "굴림체", Roboto, "Helvetica Neue", sans-serif ; }
+
+ul{
+    list-style-type: none;
+}
+
+.gm-ui-hover-effect{
+    width: 35px !important;
+    height: 31px !important;
+}
+.gm-ui-hover-effect > img{
+    margin: 9px 11px !important;
+}
+  
+.gm-style-iw > div {
+    display: block !important;
+    max-width: none !important;
+    width: inherit;
+    text-align: center;
+    margin: 0px 0px 0px 0px;
+}
+.gm-style-iw{
+    width: 180px !important;
+}

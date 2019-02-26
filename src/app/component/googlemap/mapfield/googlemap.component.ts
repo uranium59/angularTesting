@@ -19,19 +19,21 @@ export class GooglemapComponent {
     this.cars = [
       {
         CarId: 0,
-        CarType: '두돈반',
+        CarType: '레티나',
         Latitude: 37.51,
         Longitude: 126.97,
-        MovieUrl: 'alwa_20190208_080540_F.MP4',
-        ReturnDate: new Date('2019-02-22')
+        Status: '주행중',
+        Heading: 180,
+        CarNumber: '12가3456'
       },
       {
         CarId: 1,
         CarType: '소나타',
         Latitude: 37.525,
         Longitude: 126.964,
-        MovieUrl: 'alwa_20190208_080540_F.MP4',
-        ReturnDate: new Date('2019-02-22')
+        Status: '주행중',
+        Heading: 90,
+        CarNumber: '12나3456'
       }
     ];
   }

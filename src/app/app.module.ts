@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { MaterialModule } from './material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ApprouterModule } from './app.router.module';
 
@@ -24,6 +25,8 @@ import { LeftsidemenuComponent } from './component/leftsidemenu/leftsidemenu.com
   imports: [
     BrowserModule,
     MaterialModule,
+    FormsModule,
+    ReactiveFormsModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAlZ0Wcf-YrcEQKNl6QYPNTmzXTkecDKXM'
     }),
