@@ -5,52 +5,52 @@
       메뉴닫기
     </button>
   </div>
-  <mat-card class="login-card">
-    <mat-card-header>
-      <mat-card-title>로그인</mat-card-title>
-    </mat-card-header>
-    <form class="example-form" [formGroup]="loginForm">
-      <mat-card-content>
-        <table class="input-full-width" cellspacing="0">
-          <tr>
-            <td>
-              <mat-form-field class="input-full-width">
-                <input matInput placeholder="ID" formControlName="userId" name="ID">
-              </mat-form-field>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <mat-form-field class="input-full-width">
-                <input matInput placeholder="비밀번호" formControlName="password" type="password">
-              </mat-form-field>
-            </td>
-          </tr>
-        </table>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-raised-button (click)="login()" color="primary">로그인</button>
-      </mat-card-actions>
+  <div *ngIf="!_config.isLogin" class="login-div">
+    <mat-toolbar class="login-label">
+      <span>로그인</span>
+    </mat-toolbar>
+    <form class="login-form" [formGroup]="loginForm">
+      <table class="input-full-width" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field class="input-full-width">
+              <input matInput placeholder="ID" formControlName="userId" name="ID">
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field class="input-full-width">
+              <input matInput placeholder="비밀번호" formControlName="password" type="password">
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
     </form>
-  </mat-card>
-  <div class="welcome-message">
-    ㅇㅇㅇ님 환영합니다
+    <button mat-raised-button (click)="login()" class="login-button">로그인</button>
   </div>
-  <ul id="accordion" class="accordion">
-    <mat-divider></mat-divider>
-    <li *ngFor="let menu of menus; let i = index" [class.active]="menu.active">
-      <div class="menu" (click)="toggle(i)">
-        <i [class]="menu.iconClass"></i>
-        <button mat-button class="fa fa-chevron-down">
-          {{menu.name}}
-        </button>
-      </div>
-      <ul class="submenu" #submenu [style.height.px]="menu.active ? submenu.scrollHeight : 0">
-        <li *ngFor="let submenu of menu.submenu">
-          <button mat-button (click)="loadform(submenu.url)">{{ submenu.name }}</button>
-        </li>
-      </ul>
+
+  <div *ngIf="_config.isLogin">
+    <mat-toolbar class="welcome-label">
+      <span>관리자님 환영합니다</span>
+    </mat-toolbar>
+    <ul id="accordion" class="accordion">
       <mat-divider></mat-divider>
-    </li>
-  </ul>
+      <li *ngFor="let menu of menus; let i = index" [class.active]="menu.active">
+        <div class="menu" (click)="toggle(i)">
+          <i [class]="menu.iconClass"></i>
+          <button mat-button class="fa fa-chevron-down">
+            {{menu.name}}
+          </button>
+        </div>
+        <ul class="submenu" #submenu [style.height.px]="menu.active ? submenu.scrollHeight : 0">
+          <li *ngFor="let submenu of menu.submenu">
+            <a mat-button [routerLink]="[submenu.url]">{{ submenu.name }}</a>
+          </li>
+        </ul>
+        <mat-divider></mat-divider>
+      </li>
+    </ul>
+    <button mat-raised-button (click)="logout()" class="logout-button">로그아웃</button>
+  </div>
 </div>

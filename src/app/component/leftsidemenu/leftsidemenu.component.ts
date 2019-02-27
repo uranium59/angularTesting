@@ -1,6 +1,8 @@
 import { Component, Output, EventEmitter, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Menu } from './types/Menu';
+import {LoginCheckService} from '../../service/logincheck.service';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-leftsidemenu',
@@ -13,7 +15,7 @@ export class LeftsidemenuComponent implements OnInit {
 
   @Output() toggleSide = new EventEmitter();
 
-  constructor() { }
+  constructor(private _config: LoginCheckService, private _toaster: ToastrService) { }
 
   ngOnInit() {
 
@@ -23,8 +25,8 @@ export class LeftsidemenuComponent implements OnInit {
         iconClass: 'fa fa-code menu-arrow',
         active: false,
         submenu: [
-          { name: '차량목록조회', url: '/carList' },
-          { name: '차량시동금지', url: '/carStop' }
+          { name: '차량목록조회', url: '/carlist' },
+          { name: '차량시동금지', url: '/carstop' }
         ]
       },
       {
@@ -48,7 +50,7 @@ export class LeftsidemenuComponent implements OnInit {
         iconClass: 'fa fa-code menu-arrow',
         active: false,
         submenu: [
-          { name: '차량상태변경', url: '#' }
+          { name: '차량상태변경', url: '/carstate' }
         ]
       }
     ];
@@ -76,8 +78,12 @@ export class LeftsidemenuComponent implements OnInit {
 
   login() {
     if (this.loginForm.invalid) {
-      console.log("입력된 값이 잘못되었습니다", "입력오류");
+      this._toaster.warning('입력된 값이 잘못되었습니다', '입력오류');
       return;
     }
+    localStorage.setItem(this._config.StorageNameOfApiToken, 'logged in');
+  }
+  logout() {
+    localStorage.removeItem(this._config.StorageNameOfApiToken);
   }
 }

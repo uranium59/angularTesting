@@ -27,3 +27,8 @@ ul{
 .gm-style-iw{
     width: 180px !important;
 }
+
+.toast {
+    font-family: '굴림체';
+    font-size: 12px;
+}

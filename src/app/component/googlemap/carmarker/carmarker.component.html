@@ -1,5 +1,7 @@
 <agm-marker [latitude]="car.Latitude" [longitude]="car.Longitude" (mouseOver)="onMouseOver(infoWindow,gm)"
-  (mouseOut)="onMouseLeave(infoWindow)" (markerClick)="onMouseClick()">
+  (mouseOut)="onMouseLeave(infoWindow)" (markerClick)="onMouseClick()" [iconUrl]="arrowImage"
+  >
+  <img src="{{lockImage}}">
   <agm-info-window #infoWindow (infoWindowClose)="closeInfoWindow()">
     <div class="car-marker">
       <h3>{{car.CarNumber}}</h3>

@@ -6,4 +6,5 @@ export interface Car{
     Longitude: number;
     Heading: number;
     Status: string;
+    ForbidMove: boolean;
 }

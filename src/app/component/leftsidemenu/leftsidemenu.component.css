@@ -1,5 +1,4 @@
 .nav{
-    background-image: linear-gradient(to 45 deg, #fff3e2, #fff);
     height: 80%;
 }
 
@@ -8,26 +7,37 @@
     margin-left: 17px;
 }
 
-.login-card{
-    width: 155px;
-    margin: 10% auto;
-}
-
 .mat-card-title{
     font-size: 15px;
     left : 13px;
+}
+.login-div{
+    background-color: ivory;
+}
+
+.login-form{
+    margin-left: 9px;
+    margin-right: 9px;
+}
+
+.login-button{
+    margin-top: 11px;
+    margin-right: 9px;
+    float: right;
+    background-color: Lavender;
 }
 
 .input-full-width{
     width: 100%;
 }
-
-.mat-card-actions{
-    text-align: right;
+.login-label{
+    height: 50px;
+    margin-bottom: 11px;
 }
 
-.welcome-message{
+.welcome-label{
     height: 50px;
+    font-size: 17px;
 }
 
 .left-side-toggle{
@@ -41,6 +51,7 @@
     padding: 0px 0px 0px 15px;
     margin: auto;  
     border-radius: 4px;
+    background-color: ivory;
 }
 
 .accordion .menu{
@@ -56,11 +67,22 @@
     transform: rotate(90deg);
 }
 
+.mat-form-field-wrapper {
+    padding-bottom: 12px;
+}
+
 .submenu {
     height: 0;
     padding: 0px 0px 0px 15px;
     overflow: hidden;
-    background-color: rgb(235, 244, 252);
+    background-color: rgb(228, 228, 204);
     font-size: 14px;
     transition: height 0.4s ease;
+}
+
+.logout-button{
+    margin-top: 17px;
+    margin-right: 9px;
+    float: right;
+    background-color: Lavender;
 }

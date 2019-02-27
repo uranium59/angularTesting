@@ -11,18 +11,20 @@ export class MoviePlayWrapper implements OnInit {
         private route: ActivatedRoute) {
     }
     movieUrl: string;
-    ngOnInit(){
+    ngOnInit() {
         this.movieUrl = this.route.snapshot.params.url;
         this.openDialog();
     }
 
     openDialog(): void {
-        const dialogRef = this.dialog.open(MoviePlayComponent, {
-            width: '760px',
-            data: {url: this.movieUrl}
-        });
-        dialogRef.afterClosed().subscribe(result => {
-            this.router.navigate(['/'], { relativeTo: this.route });
+        setTimeout(() => {
+            const dialogRef = this.dialog.open(MoviePlayComponent, {
+                width: '760px',
+                data: { url: this.movieUrl }
+            });
+            dialogRef.afterClosed().subscribe(result => {
+                this.router.navigate(['/'], { relativeTo: this.route });
+            });
         });
     }
 }
