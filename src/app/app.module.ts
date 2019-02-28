@@ -10,7 +10,7 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 
 import { ApprouterModule } from './app.router.module';
 
-import { AgmCoreModule } from '@agm/core';
+import { AgmCoreModule } from './core/index';
 
 import { AppComponent } from './app.component';
 import { GooglemapComponent } from './component/googlemap/mapfield/googlemap.component';
