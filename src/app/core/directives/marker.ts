@@ -74,7 +74,7 @@ export class AgmMarker implements OnDestroy, OnChanges, AfterContentInit, FitBou
    * Icon (the URL of the image) for the foreground.
    */
   @Input() iconUrl: string;
-
+  @Input() color: string;
   /**
    * If true, the marker is visible
    */
@@ -97,6 +97,8 @@ export class AgmMarker implements OnDestroy, OnChanges, AfterContentInit, FitBou
    * screen.
    */
   @Input() zIndex: number = 1;
+
+  @Input() rotation: number = 0;
 
   /**
    * If true, the marker can be clicked. Default value is true.
@@ -221,6 +223,9 @@ export class AgmMarker implements OnDestroy, OnChanges, AfterContentInit, FitBou
     }
     if (changes['animation']) {
       this._markerManager.updateAnimation(this);
+    }
+    if (changes['color']) {
+      this._markerManager.updateColor(this);
     }
   }
 

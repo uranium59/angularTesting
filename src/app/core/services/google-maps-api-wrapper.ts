@@ -1,10 +1,11 @@
-import {Injectable, NgZone} from '@angular/core';
-import {Observable, Observer} from 'rxjs';
+import { Injectable, NgZone } from '@angular/core';
+import { Observable, Observer } from 'rxjs';
 
 import * as mapTypes from './google-maps-types';
-import {Polyline} from './google-maps-types';
-import {PolylineOptions} from './google-maps-types';
-import {MapsAPILoader} from './maps-api-loader/maps-api-loader';
+import { Polyline } from './google-maps-types';
+import { PolylineOptions } from './google-maps-types';
+import { MapsAPILoader } from './maps-api-loader/maps-api-loader';
+import { forEach } from '@angular/router/src/utils/collection';
 
 // todo: add types for this
 declare var google: any;
@@ -20,11 +21,11 @@ export class GoogleMapsAPIWrapper {
 
   constructor(private _loader: MapsAPILoader, private _zone: NgZone) {
     this._map =
-        new Promise<mapTypes.GoogleMap>((resolve: () => void) => { this._mapResolver = resolve; });
+      new Promise<mapTypes.GoogleMap>((resolve: () => void) => { this._mapResolver = resolve; });
   }
 
   createMap(el: HTMLElement, mapOptions: mapTypes.MapOptions): Promise<void> {
-    return this._zone.runOutsideAngular( () => {
+    return this._zone.runOutsideAngular(() => {
       return this._loader.load().then(() => {
         const map = new google.maps.Map(el, mapOptions);
         this._mapResolver(<mapTypes.GoogleMap>map);
@@ -41,7 +42,7 @@ export class GoogleMapsAPIWrapper {
    * Creates a google map marker with the map context
    */
   createMarker(options: mapTypes.MarkerOptions = <mapTypes.MarkerOptions>{}, addToMap: boolean = true):
-      Promise<mapTypes.Marker> {
+    Promise<mapTypes.Marker> {
     return this._map.then((map: mapTypes.GoogleMap) => {
       if (addToMap) {
         options.map = map;
@@ -51,7 +52,48 @@ export class GoogleMapsAPIWrapper {
   }
 
   createInfoWindow(options?: mapTypes.InfoWindowOptions): Promise<mapTypes.InfoWindow> {
-    return this._map.then(() => { return new google.maps.InfoWindow(options); });
+    return this._map.then(() => {
+      const infoWindow = new google.maps.InfoWindow(options);
+
+      google.maps.event.addListener(infoWindow, 'domready', () => {
+
+        // Reference to the DIV that wraps the bottom of infowindow
+        const iwOuters = document.getElementsByClassName('gm-style-iw');
+        /* Since this div is in a position prior to .gm-div style-iw.
+         * We use jQuery and create a iwBackground variable,
+         * and took advantage of the existing reference .gm-style-iw for the previous div with .prev().
+        */
+        for (let i = 0; i < iwOuters.length; ++i) {
+          const iwOuter = iwOuters[i];
+          const iwBackground = iwOuter.previousElementSibling;
+          if(iwBackground.children[2].getAttribute('style') === `display: none;`){
+            continue;
+          }
+
+          // Removes background shadow DIV
+          iwBackground.children[0].setAttribute('style', `display: none;`);
+          iwBackground.children[1].setAttribute('style', `display: none;`);
+          iwBackground.children[2].setAttribute('style', `display: none;`);
+          iwBackground.children[3].setAttribute('style', `display: none;`);
+
+          // Removes white background DIV
+
+          // Moves the infowindow 115px to the right.
+          iwOuter.parentElement.parentElement.setAttribute('style', `left: 115px;`);
+          const iwParent = iwOuter.parentElement as HTMLElement;
+          iwParent.style.width = (+iwParent.style.width - 30) + '';
+          iwParent.style.height = (+iwParent.style.height - 30) + '';
+          iwOuter.setAttribute('style', iwOuter.getAttribute('style') + 'left: 60px !important; top: 60px !important;');
+          // Moves the shadow of the arrow 76px to the left margin.
+          // Reference to the div that groups the close button elements.
+          var iwCloseBtn = iwOuter.nextElementSibling;
+
+          // Apply the desired effect to the close button
+          iwCloseBtn.setAttribute('style', `display: none;`);
+        }
+      });
+      return infoWindow;
+    });
   }
 
   /**
@@ -144,7 +186,7 @@ export class GoogleMapsAPIWrapper {
     return this._map.then((map: mapTypes.GoogleMap) => map.getCenter());
   }
 
-  panTo(latLng: mapTypes.LatLng|mapTypes.LatLngLiteral): Promise<void> {
+  panTo(latLng: mapTypes.LatLng | mapTypes.LatLngLiteral): Promise<void> {
     return this._map.then((map) => map.panTo(latLng));
   }
 
@@ -152,11 +194,11 @@ export class GoogleMapsAPIWrapper {
     return this._map.then((map) => map.panBy(x, y));
   }
 
-  fitBounds(latLng: mapTypes.LatLngBounds|mapTypes.LatLngBoundsLiteral): Promise<void> {
+  fitBounds(latLng: mapTypes.LatLngBounds | mapTypes.LatLngBoundsLiteral): Promise<void> {
     return this._map.then((map) => map.fitBounds(latLng));
   }
 
-  panToBounds(latLng: mapTypes.LatLngBounds|mapTypes.LatLngBoundsLiteral): Promise<void> {
+  panToBounds(latLng: mapTypes.LatLngBounds | mapTypes.LatLngBoundsLiteral): Promise<void> {
     return this._map.then((map) => map.panToBounds(latLng));
   }
 

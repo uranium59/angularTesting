@@ -6,7 +6,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { HttpClientModule } from '@angular/common/http';
+
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { FakeStorageService } from './service/fakestorage.service';
 
 import { ApprouterModule } from './app.router.module';
 
@@ -14,17 +16,18 @@ import { AgmCoreModule } from './core/index';
 
 import { AppComponent } from './app.component';
 import { GooglemapComponent } from './component/googlemap/mapfield/googlemap.component';
+import { IntervalupdaterComponent } from './component/googlemap/mapfield/intervalupdater/intervalupdater.component';
 
 import { CarmarkerComponent } from './component/googlemap/carmarker/carmarker.component';
 import { LeftsidemenuComponent } from './component/leftsidemenu/leftsidemenu.component';
 
 import { LoginCheckService } from './service/logincheck.service';
-import { FakeStorageService } from './service/fakestorage.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     GooglemapComponent,
+    IntervalupdaterComponent,
     CarmarkerComponent,
     LeftsidemenuComponent,
   ],

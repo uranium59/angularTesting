@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { Observable, of } from 'rxjs';
+import { Observable, of, BehaviorSubject } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
 import { Car } from '../models/car';
@@ -11,23 +11,44 @@ const httpOptions = {
 };
 
 @Injectable({ providedIn: 'root' })
-export class CarService {
-    private carUrl = 'api/cars';  // URL to web api
+export class CarService implements OnInit {
+
+    private carsUrl = 'api/cars';  // URL to web api
     constructor(
-        private http: HttpClient) { }
+        private http: HttpClient) {
+    }
 
+    ngOnInit() {
+    }
+    private cars$: BehaviorSubject<Car[]>;
+    private observeCars: Observable<Car[]>;
 
-    getCars(): Observable<Car[]> {
-        return this.http.get<Car[]>(this.carUrl)
-            .pipe(
-                tap(_ => console.log('fetched cars')),
-                catchError(this.handleError('getHeroes', []))
+    getDataFromDB(): void {
+        this.http.get<Car[]>(this.carsUrl)
+            .subscribe(
+                _ => {
+                    this.cars$.next(_);
+                }),
+            catchError(this.handleError('getCars', [])
             );
     }
+    getCars(): Observable<Car[]> {
+        if (this.cars$ === undefined) {
+            this.cars$ = new BehaviorSubject<Car[]>([]);
+            this.getDataFromDB();
+        }
+        return this.cars$;
+    }
+    getCar(id: number | string): Observable<Car> {
+        return this.getCars().pipe(
+            map(cars => cars.find(car => car.id === +id))
+        );
+    }
+
     updateCar(car: Car): Observable<any> {
-        return this.http.put(this.carUrl, car, httpOptions).pipe(
-            tap(_ => console.log('updated cars')),
-            catchError(this.handleError<any>('updateHero'))
+        return this.http.put(this.carsUrl, car, httpOptions).pipe(
+            tap(_ => { this.getDataFromDB(); }),
+            catchError(this.handleError<any>('update cars'))
         );
     }
 

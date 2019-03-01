@@ -1,6 +1,7 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Car } from '../../../models/car';
+import { Observable} from 'rxjs';
 import { CarService } from '../../../service/car.service';
 
 @Component({
@@ -8,10 +9,10 @@ import { CarService } from '../../../service/car.service';
   templateUrl: './car-info.component.html',
   styleUrls: ['./car-info.component.css']
 })
-export class CarInfoComponent {
+export class CarInfoComponent implements OnInit {
   cars: Car[];
   displayedColumns: string[] = [
-    'CarId', 'CarNumber', 'CarType', 'Latitude', 'Longitude', 'Status', 'ForbidMove'
+    'id', 'CarNumber', 'CarType', 'Latitude', 'Longitude', 'Status', 'ForbidMove'
   ];
 
   constructor(
@@ -19,7 +20,7 @@ export class CarInfoComponent {
     @Inject(MAT_DIALOG_DATA) public data: any,
     private _carService: CarService) { }
 
-    ngAfterViewInit() {
+    ngOnInit() {
       this.getCars();
     }
     getCars(): void {

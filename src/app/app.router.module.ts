@@ -9,11 +9,17 @@ import { MoviePlayWrapper } from './component/dialog/movie-play/movie-play-wrapp
 import { MoviePlayComponent } from './component/dialog/movie-play/movie-play.component';
 import { CarstatechangeComponent } from './component/dialog/carstatechange/carstatechange.component';
 import { CarStateChangeWrapper } from './component/dialog/carstatechange/car-state-change-wrapper.component';
+import { ProhibitmoveComponent } from './component/dialog/prohibitmove/prohibitmove.component';
+import { ProhibitMoveWrapper } from './component/dialog/prohibitmove/prohibitmove-wrapper.component';
+import { MovieListWrapper } from './component/dialog/movielist/movie-list-wrapper.component'
+import { MovielistComponent } from './component/dialog/movielist/movielist.component';
 
 const appRoutes: Routes = [
   { path: 'carmovie/:url', component: MoviePlayWrapper, },
   { path: 'carlist', component: CarInfoWrapper },
-  { path: 'carstate', component: CarStateChangeWrapper }
+  { path: 'carstate', component: CarStateChangeWrapper },
+  { path: 'carstop', component: ProhibitMoveWrapper },
+  { path: 'movielist', component: MovieListWrapper }
 ];
 
 @NgModule({
@@ -21,7 +27,8 @@ const appRoutes: Routes = [
     RouterModule,
   ],
   entryComponents: [CarInfoWrapper, CarInfoComponent, MoviePlayWrapper, MoviePlayComponent,
-    CarStateChangeWrapper, CarstatechangeComponent
+    CarStateChangeWrapper, CarstatechangeComponent, ProhibitMoveWrapper, ProhibitmoveComponent,
+    MovieListWrapper, MovielistComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -34,7 +41,11 @@ const appRoutes: Routes = [
     CarStateChangeWrapper,
     CarstatechangeComponent,
     MoviePlayWrapper,
-    MoviePlayComponent
+    MoviePlayComponent,
+    ProhibitMoveWrapper,
+    ProhibitmoveComponent,
+    MovieListWrapper,
+    MovielistComponent,
   ]
 })
 export class ApprouterModule { }

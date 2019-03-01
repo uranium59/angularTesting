@@ -1,5 +1,5 @@
 export interface Car{
-    CarId: number;
+    id: number;
     CarNumber: string;
     CarType: string;
     Latitude: number;

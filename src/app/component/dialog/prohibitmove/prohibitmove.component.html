@@ -2,7 +2,7 @@
   <mat-card>
     <mat-card-title style="width:100%">
       <h5>
-        전체 차량 목록
+        차량 상태 수정
       </h5>
     </mat-card-title>
     <mat-card-content>
@@ -19,22 +19,18 @@
           <th mat-header-cell *matHeaderCellDef>차량타입</th>
           <td mat-cell *matCellDef="let element"> {{element.CarType}} </td>
         </ng-container>
-        <ng-container matColumnDef="Latitude">
-          <th mat-header-cell *matHeaderCellDef>위도</th>
-          <td mat-cell *matCellDef="let element"> {{element.Latitude}} </td>
-        </ng-container>
-        <ng-container matColumnDef="Longitude">
-          <th mat-header-cell *matHeaderCellDef>경도</th>
-          <td mat-cell *matCellDef="let element"> {{element.Longitude}} </td>
-        </ng-container>
-        <ng-container matColumnDef="ForbidMove">
-          <th mat-header-cell *matHeaderCellDef>이동금지</th>
-          <td mat-cell *matCellDef="let element"> {{element.ForbidMove ? '금지' : '이동가능'}} </td>
-        </ng-container>
         <ng-container matColumnDef="Status">
           <th mat-header-cell *matHeaderCellDef>차량상태</th>
           <td mat-cell *matCellDef="let element">
             {{element.Status}}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="ForbidMove">
+          <th mat-header-cell *matHeaderCellDef>주행금지</th>
+          <td mat-cell *matCellDef="let element">
+            <mat-checkbox [(checked)]="element.ForbidMove"
+            (change)="onChange(element.id, $event)">
+            </mat-checkbox>
           </td>
         </ng-container>
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

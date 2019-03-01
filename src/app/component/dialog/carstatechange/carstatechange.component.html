@@ -7,9 +7,9 @@
     </mat-card-title>
     <mat-card-content>
       <table mat-table [dataSource]="cars">
-        <ng-container matColumnDef="CarId">
+        <ng-container matColumnDef="id">
           <th mat-header-cell *matHeaderCellDef>ID</th>
-          <td mat-cell *matCellDef="let element"> {{element.CarId}} </td>
+          <td mat-cell *matCellDef="let element"> {{element.id}} </td>
         </ng-container>
         <ng-container matColumnDef="CarNumber">
           <th mat-header-cell *matHeaderCellDef>차량번호</th>
@@ -22,12 +22,12 @@
         <ng-container matColumnDef="Status">
           <th mat-header-cell *matHeaderCellDef>차량상태</th>
           <td mat-cell *matCellDef="let element">
-            <mat-select [(value)]="element.Status">
+            <mat-select [value]="element.Status"
+              (selectionChange)="onChange(element.id, $event)">
               <mat-option value="주행중">주행중</mat-option>
               <mat-option value="주차">주차</mat-option>
               <mat-option value="사고">사고</mat-option>
             </mat-select>
-
           </td>
         </ng-container>
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

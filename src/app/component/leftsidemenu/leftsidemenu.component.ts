@@ -34,15 +34,7 @@ export class LeftsidemenuComponent implements OnInit {
         iconClass: 'fa fa-code menu-arrow',
         active: false,
         submenu: [
-          { name: '영상목록조회', url: '/allMovieList' }
-        ]
-      },
-      {
-        name: '3번메뉴',
-        iconClass: 'fa fa-code menu-arrow',
-        active: false,
-        submenu: [
-          { name: '3-1메뉴', url: '#' }
+          { name: '영상목록조회', url: '/movielist' }
         ]
       },
       {

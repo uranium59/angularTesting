@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Car } from '../../../models/car';
+import { Observable } from 'rxjs';
+import { debounce, pairwise, startWith } from 'rxjs/operators';
 
 import { CarService } from '../../../service/car.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-googlemap',
@@ -10,14 +13,14 @@ import { CarService } from '../../../service/car.service';
 })
 export class GooglemapComponent implements OnInit {
   title: string = 'My first AGM project';
-  lat: number = 37.52;
-  lng: number = 126.96;
+  @Input() lat: number = 37.52;
+  @Input() lng: number = 126.96;
   zoom: number = 12;
   minzoom: number = 9;
   maxzoom: number = 17;
 
   cars: Car[];
-  constructor(private _carService: CarService) {
+  constructor(private _carService: CarService, private _toaster: ToastrService) {
   }
 
   ngOnInit() {
@@ -25,8 +28,14 @@ export class GooglemapComponent implements OnInit {
   }
 
   getCars(): void {
-
     this._carService.getCars()
-      .subscribe(cars => this.cars = cars);
+      .subscribe((cars) => {
+        this.cars = cars;
+        console.log('map car updated');
+      });
+  }
+  getPosition(data) {
+    this.lat = data.lat;
+    this.lng = data.lng;
   }
 }

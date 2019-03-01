@@ -1,6 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
 import { Car } from '../../../models/car';
-import { CarGrid } from './cargridtile';
 
 @Component({
   selector: 'app-carmarker',
@@ -8,54 +7,43 @@ import { CarGrid } from './cargridtile';
   styleUrls: ['./carmarker.component.css']
 })
 export class CarmarkerComponent implements OnInit {
-  holddisplay: boolean = false;
-  displaying: boolean = false;
+  static _colorMap = new Map([
+    ['주행중', 'green'],
+    ['주차', 'blue'],
+    ['사고', 'red']
+  ]);
+  holddisplay: boolean = true;
+  displaying: boolean = true;
 
-  car: Car;
-  tiles: CarGrid[];
+  // car: Car;
+  carColor: string;
   arrowImage: string;
   lockImage: string;
+  car: Car;
 
-  @Input()
-  set Car(car: Car) {
-    this.car = car;
-    this.tiles = [
-      { text: '차량종류', cols: 1, rows: 1, class: 'grid-left' },
-      { text: car.CarType, cols: 1, rows: 1, class: 'grid-right' },
-      { text: '차량상태', cols: 1, rows: 1, class: 'grid-left' },
-      { text: car.Status, cols: 1, rows: 1, class: 'grid-right' },
-    ];
-    //this.arrowImage = "{ url: 'assets/locationarrow.png', width:50 }";
-    this.arrowImage = 'assets/locationarrow.png';
-    this.lockImage = 'assets/lock.png';
+  @Input() set Car(Car: Car) {
+    this.car = Car;
+    this.carColor = CarmarkerComponent._colorMap.get(Car.Status);
   }
 
-  constructor() {
+  @Output() onClicked: EventEmitter<any> = new EventEmitter();
+
+  constructor(
+  ) {
 
   }
 
   ngOnInit() {
+    this.lockImage = 'assets/lock.png';
   }
 
   onMouseOver(infoWindow) {
-    if (this.displaying) {
-      return;
-    }
-    this.displaying = true;
-    infoWindow.open();
   }
   onMouseLeave(infoWindow) {
-    if (this.holddisplay) {
-      return;
-    }
-    this.displaying = false;
-    infoWindow.close();
   }
   onMouseClick() {
-    this.holddisplay = true;
+    this.onClicked.emit({ lat: this.car.Latitude, lng: this.car.Longitude });
   }
   closeInfoWindow() {
-    this.holddisplay = false;
-    this.displaying = false;
   }
 }

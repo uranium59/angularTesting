@@ -1,16 +1,15 @@
-<agm-marker [latitude]="car.Latitude" [longitude]="car.Longitude" (mouseOver)="onMouseOver(infoWindow,gm)"
-  (mouseOut)="onMouseLeave(infoWindow)" (markerClick)="onMouseClick()" [iconUrl]="arrowImage"
-  >
-  <img src="{{lockImage}}">
-  <agm-info-window #infoWindow (infoWindowClose)="closeInfoWindow()">
-    <div class="car-marker">
-      <h3>{{car.CarNumber}}</h3>
-      <mat-divider></mat-divider>
-      <mat-grid-list cols="2" rowHeight="17">
-        <mat-grid-tile *ngFor="let tile of tiles" class="tile.class">
-          {{tile.text}}
-        </mat-grid-tile>
-      </mat-grid-list>
-    </div>
+<div *ngIf="car">
+<agm-marker *ngIf="car.ForbidMove" [latitude]="car.Latitude" [longitude]="car.Longitude" [iconUrl]="lockImage" [zIndex]="2">
+  <div>
+    <p>thisis lock</p>
+  </div>
+</agm-marker>
+<agm-marker [latitude]="car.Latitude" [longitude]="car.Longitude" (markerClick)="onMouseClick()"
+  [color]="carColor" >
+  <agm-info-window #infoWindow [isOpen]="true">
+    <mat-card class="car-marker">
+      <h5>{{car.CarNumber}}</h5>
+    </mat-card>
   </agm-info-window>
 </agm-marker>
+</div>

@@ -20,12 +20,11 @@ ul{
 .gm-style-iw > div {
     display: block !important;
     max-width: none !important;
-    width: inherit;
+    width: 70px !important;
     text-align: center;
     margin: 0px 0px 0px 0px;
 }
 .gm-style-iw{
-    width: 180px !important;
 }
 
 .toast {
