@@ -6,7 +6,7 @@
 </agm-marker>
 <agm-marker [latitude]="car.Latitude" [longitude]="car.Longitude" (markerClick)="onMouseClick()"
   [color]="carColor" >
-  <agm-info-window #infoWindow [isOpen]="true">
+  <agm-info-window #infoWindow [isOpen]="true" [disableAutoPan]="true">
     <mat-card class="car-marker">
       <h5>{{car.CarNumber}}</h5>
     </mat-card>

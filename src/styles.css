@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import url(https://use.fontawesome.com/releases/v5.3.1/css/all.css);
 
 html, body { height: 100%; }
 body { margin: 0; font-family: "굴림체", Roboto, "Helvetica Neue", sans-serif ; }
@@ -30,4 +31,36 @@ ul{
 .toast {
     font-family: '굴림체';
     font-size: 12px;
+}
+
+.dialog-close-icon{
+    top: -7px;
+    min-width: 48px !important;
+    padding : 0 8px !important;
+    float: right;
+    vertical-align: baseline;
+}
+.dialog-close-icon > span{
+}
+
+.mat-card{
+    padding-top: 6px !important;
+    padding-bottom: 4px !important;
+}
+
+.mat-dialog-content{
+    padding-top: 4px !important;
+    padding-bottom: 4px !important;
+    padding-right: 10px !important;
+    padding-left: 10px !important;
+}
+.mat-dialog-container{
+    padding-top: 6px !important;
+    padding-bottom: 2px !important;
+}
+.mat-dialog-content > mat-card{
+    padding: 10px;
+}
+.mat-paginator-container{
+    min-height: 42px !important;
 }

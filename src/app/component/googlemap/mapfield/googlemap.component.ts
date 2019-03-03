@@ -1,9 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Car } from '../../../models/car';
-import { Observable } from 'rxjs';
-import { debounce, pairwise, startWith } from 'rxjs/operators';
 
 import { CarService } from '../../../service/car.service';
+import { LoginCheckService } from '../../../service/logincheck.service';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -20,7 +19,9 @@ export class GooglemapComponent implements OnInit {
   maxzoom: number = 17;
 
   cars: Car[];
-  constructor(private _carService: CarService, private _toaster: ToastrService) {
+  constructor(private _carService: CarService,
+    private _config: LoginCheckService,
+    private _toaster: ToastrService) {
   }
 
   ngOnInit() {

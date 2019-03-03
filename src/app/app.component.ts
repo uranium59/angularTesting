@@ -13,6 +13,13 @@ export class AppComponent {
 
   reason = '';
 
+  sideNavManage(argument: string) {
+    console.log(argument);
+    if (argument === 'open' && this.sidenav.opened) {
+      return;
+    }
+    this.sidenav.toggle();
+  }
   close(reason: string) {
     this.reason = reason;
     this.sidenav.close();

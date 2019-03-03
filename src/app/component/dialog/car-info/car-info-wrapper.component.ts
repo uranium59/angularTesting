@@ -7,7 +7,6 @@ import { CarInfoComponent } from './car-info.component';
     template: ''
 })
 export class CarInfoWrapper {
-
     constructor(public dialog: MatDialog, private router: Router,
         private route: ActivatedRoute) {
         this.openDialog();
@@ -15,7 +14,9 @@ export class CarInfoWrapper {
     openDialog(): void {
         setTimeout(() => {
             const dialogRef = this.dialog.open(CarInfoComponent, {
-                width: '650px'
+                width: '630px',
+                height: '560px',
+                minHeight: '560px'
             });
             dialogRef.afterClosed().subscribe(result => {
                 this.router.navigate(['/'], { relativeTo: this.route });

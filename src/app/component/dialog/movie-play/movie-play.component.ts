@@ -15,4 +15,7 @@ export class MoviePlayComponent {
     console.log(data);
     this.url = data.url;
   }
+  close(){
+    this.dialogRef.close();
+  }
 }

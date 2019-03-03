@@ -1,11 +1,11 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <mat-sidenav-container class="sideMenu-container">
 	<mat-sidenav class="left-container" #sidenav (keydown.escape)="close('escape')">
-		<app-leftsidemenu (toggleSide)="sidenav.toggle()">
+		<app-leftsidemenu (toggleSide)="sideNavManage($event)">
 		</app-leftsidemenu>
 	</mat-sidenav>
 	<mat-sidenav-content>
-		<button class="left-side-toggle" type="button" mat-button (click)="sidenav.toggle()">
+		<button class="left-side-toggle" type="button" mat-button (click)="sideNavManage($event)">
 			메뉴열기
 		</button>
 		<app-googlemap></app-googlemap>

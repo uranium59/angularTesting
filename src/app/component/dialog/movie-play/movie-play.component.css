@@ -1,7 +1,15 @@
+mat-card-title > h5{
+    margin: 10px 0px 10px 0px;
+    display: inline;
+    height: 36px;
+}
+.dialog-close-icon{
+    float: right;
+}
+
 mat-card {
     padding : 5px;
 }
-
 mat-card-title > h4{
     padding-left : 30px;
     margin-bottom : 10px;

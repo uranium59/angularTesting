@@ -1,6 +1,52 @@
-mat-card-title > h5{
-    margin: 10px 0px 10px 0px;
+.mat-dialog-content{
+    min-height: calc(100% - 8px);
+    height: calc(100% - 8px);
 }
-table {
+mat-card{
+    min-height: calc(100% - 20px);
+    height: calc(100% - 12px);
+    overflow: auto;
+}
+mat-card-title{
+    margin-bottom: 4px;
+}
+mat-card-title > h5{
+    margin: 10px 0px 0px 0px;
+    display: inline;
+}
+mat-card-content {
     width: 100%;
+}
+.dialog-close-icon{
+    float: right;
+}
+.mat-row:hover {
+    background-color: rgb(180, 180, 180);
+}
+.change-button{
+    min-width: 48px !important;
+    width: 48px;
+    height: 32px;
+    left: 18px;
+}
+.change-button:disabled{
+    background-color: Gainsboro;
+}
+.mat-column-Status{
+    width: 135px;
+    min-width: 135px;
+    max-width: 135px;
+}
+.status-div{
+    width: 135px;
+    min-width: 135px;
+    max-width: 135px;
+}
+.list-page{
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
 }

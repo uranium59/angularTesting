@@ -1,0 +1,32 @@
+
+mat-card-title{
+    margin-bottom: 4px;
+}
+
+mat-card-title > h5{
+    margin: 3px 0px 0px 3px;
+    display: inline;
+    position:relative;
+    top:-5px;
+}
+mat-card-content {
+    padding-left: 4px;
+    margin-bottom: 4px;
+    width: 100%;
+    overflow: auto;
+}
+.mat-header-cell{
+    font-weight: bold;
+    font-size: 14.5px;
+}
+.mat-row{
+    height: 38px;
+}
+.change-button{
+    right: 5px;
+    top: 18px;
+    float: right;
+}
+.password-form{
+    display:inline;
+}

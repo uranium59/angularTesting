@@ -18,12 +18,13 @@ export class ProhibitMoveWrapper {
     openDialog(): void {
         setTimeout(() => {
             const dialogRef = this.dialog.open(ProhibitmoveComponent, {
-                width: '460px'
+                width: '460px',
+                height: '560px',
+                minHeight: '560px'
             });
             dialogRef.afterClosed().subscribe(result => {
                 this.router.navigate(['/'], { relativeTo: this.route });
             });
         });
-
     }
 }

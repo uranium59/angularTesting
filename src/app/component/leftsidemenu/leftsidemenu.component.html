@@ -13,14 +13,14 @@
       <table class="input-full-width" cellspacing="0">
         <tr>
           <td>
-            <mat-form-field class="input-full-width">
+            <mat-form-field class="input-full-width" style="margin-bottom: -10px">
               <input matInput placeholder="ID" formControlName="userId" name="ID">
             </mat-form-field>
           </td>
         </tr>
         <tr>
           <td>
-            <mat-form-field class="input-full-width">
+            <mat-form-field class="input-full-width" style="margin-bottom: -10px">
               <input matInput placeholder="비밀번호" formControlName="password" type="password">
             </mat-form-field>
           </td>
@@ -28,6 +28,7 @@
       </table>
     </form>
     <button mat-raised-button (click)="login()" class="login-button">로그인</button>
+    <button mat-raised-button (click)="demologin()" class="login-button">Demo</button>
   </div>
 
   <div *ngIf="_config.isLogin">
@@ -38,14 +39,17 @@
       <mat-divider></mat-divider>
       <li *ngFor="let menu of menus; let i = index" [class.active]="menu.active">
         <div class="menu" (click)="toggle(i)">
-          <i [class]="menu.iconClass"></i>
-          <button mat-button class="fa fa-chevron-down">
+          <button mat-button>
+            <i class="fa fa-angle-right menu-left-icon"></i>
             {{menu.name}}
           </button>
         </div>
         <ul class="submenu" #submenu [style.height.px]="menu.active ? submenu.scrollHeight : 0">
-          <li *ngFor="let submenu of menu.submenu">
-            <a mat-button [routerLink]="[submenu.url]">{{ submenu.name }}</a>
+          <li *ngFor="let submenu of menu.submenu" [class.active]="submenu.isOpened">
+            <a mat-button [routerLink]="[submenu.url]">
+              <i class="fa fa-angle-double-right submenu-left-icon"></i>
+              {{ submenu.name }}
+            </a>
           </li>
         </ul>
         <mat-divider></mat-divider>

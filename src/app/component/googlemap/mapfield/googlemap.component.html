@@ -2,10 +2,13 @@
 	<!-- <div class="background">
 		asdf
 	</div> -->
-	<agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [minZoom]="minzoom" [maxZoom]="maxzoom" [streetViewControl]="false">
-	<li *ngFor="let car of cars">
-		<app-carmarker [Car]="car" (onClicked)="getPosition($event)">testcar</app-carmarker>
-	</li>
+	<agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [minZoom]="minzoom" [maxZoom]="maxzoom"
+		[streetViewControl]="false">
+		<div *ngIf="_config.isLogin">
+			<li *ngFor="let car of cars">
+				<app-carmarker [Car]="car" (onClicked)="getPosition($event)">testcar</app-carmarker>
+			</li>
+		</div>
 	</agm-map>
 </div>
 <app-intervalupdater></app-intervalupdater>

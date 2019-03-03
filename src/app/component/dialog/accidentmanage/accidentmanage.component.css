@@ -7,13 +7,16 @@ mat-card{
     height: calc(100% - 12px);
     overflow: auto;
 }
-
 mat-card-title{
     margin-bottom: 4px;
 }
 mat-card-title > h5{
     margin: 10px 0px 0px 0px;
     display: inline;
+}
+mat-card-content {
+    width: 100%;
+    overflow: auto;
 }
 .dialog-close-icon{
     float: right;
@@ -32,4 +35,30 @@ mat-card-title > h5{
 .table-container {
     margin-top: 10px;
     max-height: 300px;
+}
+.finished_row{
+    background-color: rgb(198, 220, 253);
+}
+.watched_row{
+    background-color: rgb(255, 251, 211);
+}
+.default_row{
+    background-color: ghostwhite;
+}
+.check-box{
+    text-align: right;
+}
+mat-checkbox{
+    padding-right: 8px;
+}
+.mat-column-IsWatched{
+    text-align: center;
+    cursor: pointer;
+}
+.mat-column-IsFinished{
+    text-align: center;
+    cursor: pointer;
+}
+.mat-column-FileName{
+    cursor: pointer;
 }

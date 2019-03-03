@@ -4,6 +4,9 @@
         <h5>
           사고 영상 목록
         </h5>
+        <button mat-button class="dialog-close-icon" (click)="close()">
+          <i class="fa fa-times"></i>
+        </button>
       </mat-card-title>
       <mat-card-content>
         <table mat-table [dataSource]="accidents">
@@ -30,6 +33,7 @@
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row mat-button *matRowDef="let row; columns: displayedColumns;" (click)="showmovie(row)"></tr>
         </table>
+        <mat-paginator [pageSize]="10" showFirstLastButtons class="list-page"></mat-paginator>
       </mat-card-content>
     </mat-card>
   </div>

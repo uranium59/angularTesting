@@ -1,5 +1,7 @@
 import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Car } from '../../../models/car';
+import { SinglecarstopComponent } from '../../dialog/singlecarstop/singlecarstop.component';
 
 @Component({
   selector: 'app-carmarker',
@@ -29,6 +31,7 @@ export class CarmarkerComponent implements OnInit {
   @Output() onClicked: EventEmitter<any> = new EventEmitter();
 
   constructor(
+    public dialog: MatDialog,
   ) {
 
   }
@@ -43,6 +46,14 @@ export class CarmarkerComponent implements OnInit {
   }
   onMouseClick() {
     this.onClicked.emit({ lat: this.car.Latitude, lng: this.car.Longitude });
+    setTimeout(() => {
+        const dialogRef = this.dialog.open(SinglecarstopComponent, {
+            width: '360px',
+            data: this.car,
+        });
+        dialogRef.afterClosed().subscribe(result => {
+        });
+    });
   }
   closeInfoWindow() {
   }

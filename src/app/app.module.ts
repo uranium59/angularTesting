@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { MaterialModule } from './material.module';
+import { DatePipe } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -20,6 +21,7 @@ import { IntervalupdaterComponent } from './component/googlemap/mapfield/interva
 
 import { CarmarkerComponent } from './component/googlemap/carmarker/carmarker.component';
 import { LeftsidemenuComponent } from './component/leftsidemenu/leftsidemenu.component';
+import { SinglecarstopComponent } from './component/dialog/singlecarstop/singlecarstop.component';
 
 import { LoginCheckService } from './service/logincheck.service';
 
@@ -30,6 +32,10 @@ import { LoginCheckService } from './service/logincheck.service';
     IntervalupdaterComponent,
     CarmarkerComponent,
     LeftsidemenuComponent,
+    SinglecarstopComponent,
+  ],
+  entryComponents: [
+    SinglecarstopComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +56,7 @@ import { LoginCheckService } from './service/logincheck.service';
       FakeStorageService, { dataEncapsulation: false }
     )
   ],
-  providers: [LoginCheckService],
+  providers: [LoginCheckService, DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule {

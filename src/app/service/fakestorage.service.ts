@@ -22,8 +22,8 @@ export class FakeStorageService implements InMemoryDbService {
       {
         id: 1,
         CarType: '소나타',
-        Latitude: 37.525,
-        Longitude: 126.964,
+        Latitude: 37.566731,
+        Longitude: 127.002183,
         Status: '사고',
         Heading: 90,
         CarNumber: '12나3456',
@@ -32,8 +32,8 @@ export class FakeStorageService implements InMemoryDbService {
       {
         id: 2,
         CarType: 'SM5',
-        Latitude: 37.505,
-        Longitude: 126.959,
+        Latitude: 37.515660,
+        Longitude: 126.941339,
         Status: '주행중',
         Heading: 270,
         CarNumber: '33다3456',
@@ -42,8 +42,8 @@ export class FakeStorageService implements InMemoryDbService {
       {
         id: 3,
         CarType: '아반떼',
-        Latitude: 37.5446,
-        Longitude: 126.961,
+        Latitude: 37.549108,
+        Longitude: 126.913548,
         Status: '주행중',
         Heading: 111,
         CarNumber: '40라0404',
@@ -52,23 +52,23 @@ export class FakeStorageService implements InMemoryDbService {
       {
         id: 4,
         CarType: '소나타',
-        Latitude: 37.5648,
-        Longitude: 126.9192,
+        Latitude: 37.532269,
+        Longitude: 126.911195,
         Status: '주차',
         Heading: 222,
         CarNumber: '50마1234',
-        ForbidMove: true
+        ForbidMove: false
       },
       {
         id: 5,
         CarType: '소렌토',
-        Latitude: 37.579,
-        Longitude: 126.9891,
+        Latitude: 37.504216,
+        Longitude: 126.980775,
         Status: '주행중',
         Heading: 333,
         CarNumber: '61바5612',
         ForbidMove: false
-      }
+      },
     ];
     return { cars };
   }

@@ -5,6 +5,7 @@
 .left-header{
     margin-top: 10px;
     margin-left: 17px;
+    margin-bottom: 13px;
 }
 
 .mat-card-title{
@@ -31,7 +32,7 @@
     width: 100%;
 }
 .login-label{
-    height: 50px;
+    height: 44px;
     margin-bottom: 11px;
 }
 
@@ -51,20 +52,34 @@
     padding: 0px 0px 0px 15px;
     margin: auto;  
     border-radius: 4px;
-    background-color: ivory;
+    background-color: rgb(250, 225, 192);
 }
 
 .accordion .menu{
     width: 100%;
+    padding-left: -10px;
 }
 
+.accordion li i {
+    color: #595959;
+    transition: all 0.4s ease;
+}
+.accordion li a {
+    transition: all 0.4s ease;
+    width: 100%;
+}
 .accordion .menu button{
     text-align: left;
     width: 100%;
 }
-
-.accordion li i.menu-arrow {
+.accordion li.active i.fa-angle-right {
     transform: rotate(90deg);
+}
+.submenu li.active a {
+    transform: translateX(30px);
+}
+.submenu li.active i {
+    transform: rotate(180deg);
 }
 
 .mat-form-field-wrapper {
@@ -73,9 +88,9 @@
 
 .submenu {
     height: 0;
-    padding: 0px 0px 0px 15px;
+    padding: 0px 0px 0px 0px;
     overflow: hidden;
-    background-color: rgb(228, 228, 204);
+    background-color: rgb(245, 236, 199);
     font-size: 14px;
     transition: height 0.4s ease;
 }
