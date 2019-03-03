@@ -47,6 +47,8 @@ mat-card-content {
 }
 .check-box{
     text-align: right;
+    width: 59%;
+    display: inline-block;
 }
 mat-checkbox{
     padding-right: 8px;
