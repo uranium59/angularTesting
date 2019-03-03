@@ -12,8 +12,8 @@ export class FakeStorageService implements InMemoryDbService {
       {
         id: 0,
         CarType: '레티나',
-        Latitude: 37.501,
-        Longitude: 126.975,
+        Latitude: 37.5720,
+        Longitude: 127.012821,
         Status: '주차',
         Heading: 180,
         CarNumber: '12가3456',
